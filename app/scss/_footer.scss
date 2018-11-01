@@ -1,0 +1,52 @@
+/* 
+		_footer.scss
+*/
+
+/*
+										---FOOTER---
+*/
+
+
+
+#footer{
+	position: relative;
+	//color: rgba(black, 0.4);
+	//min-height: 150px;
+	line-height: 170%;
+	background-repeat: no-repeat;
+	background-position-y: center;
+	background-size: cover;
+	padding-top: 30px;
+	background-color: $color-3;
+}
+.footer-menu{
+	.menu ul:not([class*="sub-menu"]) > li:hover{
+		background-color: white;
+		a{
+			color: $color-3;}
+	}
+	li{
+		color: white;
+	}
+}
+.footer-content{
+
+	.align-i-center{
+		min-height: 200px;
+		@media (max-width: 991px) {
+			flex-direction: column-reverse;
+		}
+	}
+
+}
+.socicons{
+	font-size: 20px;
+	li{
+		margin: 0 5px;
+	}
+}
+
+.dev{
+	font-size: 0.9em;
+}
+
