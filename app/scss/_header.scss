@@ -7,7 +7,7 @@
 										 ---HEADER---
 */
 
-$header-top-height: 120px; 
+$header-top-height: 65px; 
 $header-middle-height: 145px; 
 $header-bottom-height: 85px;
 $header-min-menu: 70px;
@@ -35,7 +35,7 @@ $header-min-menu: 70px;
 
 .header-hidden{
 	//position: relative;
-	height: $header-top-height+$header-bottom-height;
+	height: $header-top-height+$header-bottom-height+60px;
 	background-color: transparent;
 	transition: height 0.3s ease-in-out 0.4s;
 	@media ( max-width: 991px ){
@@ -52,8 +52,8 @@ $header-min-menu: 70px;
 	}
 }
 .header-top{
-	background-color: white;
-	color: black;
+	z-index: 3;
+  position: relative;
 	//position: fixed;
 	width: 100%;
 	.btn-def{
@@ -68,7 +68,7 @@ $header-min-menu: 70px;
 }
 .header-bottom{
 	position: relative;
-	background-color: white;
+	background-color: rgba(black, 0.5);
 	.align-i-center{
 		height: $header-bottom-height;
 	}
@@ -76,22 +76,13 @@ $header-min-menu: 70px;
 
 
 .header-logo {
-	padding-top: 5px;
-  padding-bottom: 5px;	
 	img{
 		display: inline-block;
-		width: 85px;
+		position: absolute;
+    width: 225px;
+ 		@extend .trans-h-center;
 		vertical-align: middle;
-	}
-	.slogan{
-		display: inline-block;
-		color: $color-1;
-		font-weight: 700;
-		text-transform: uppercase;
-		vertical-align: middle;
-    //width: 220px;
-    text-align: left;
-    margin-top: 10px;
+		top: 10px;
 	}
 }
 
@@ -100,8 +91,11 @@ $header-min-menu: 70px;
 	.header-top{
 		transform-origin: 50% 0;
 	}
-	.header-top, .header-bottom, .header-top-content, .header-logo img,{
+	.header-top, .header-bottom, .header-top-content, .header-logo img{
 		transition: all 0.5s ease; 	
+	}
+	.header-info{
+		transition: all 0.3s ease;
 	}
 	&.scrolled, &.header-pages{
 		.header-top{
@@ -109,6 +103,15 @@ $header-min-menu: 70px;
 		}
 		.header-top-content{
 			height: 0;
+		}
+		.header-logo{
+			img{
+				width: 110px;
+				top: 10px;
+			}
+		}
+		.header-info{
+			opacity: 0;
 		}
 		.header-bottom{
 			top: 0;
@@ -130,10 +133,6 @@ $header-min-menu: 70px;
 		&:hover{
 			color: rgba(white, 0.7);
 		}
-	}
-	.lang-current{
-		min-width: 50px;
-		position: relative;
 	}
 	.drop-sub-box{
 		background-color: $color-1;
@@ -159,9 +158,8 @@ $header-min-menu: 70px;
 .menu{
 	font-weight: 500;
 	position: relative;
-	border-top: 1px solid rgba($color-gray-1, 0.4);
-	border-bottom: 1px solid rgba($color-gray-1, 0.4);
-	color: black;
+	color: white;
+	font-family: $font-family-2;
 	font-weight: 600;
 	nav{
 		white-space: nowrap;
@@ -169,25 +167,30 @@ $header-min-menu: 70px;
 	ul:not([class*="sub-menu"]){
 	  display: flex;
 	  justify-items: center;
+	  justify-content: space-between;
 		@extend .letter-none;
 		& > li{
 			display: inline-block;
 			position: relative;
-			width: 100%;
+			width: auto;
 			letter-spacing: 0;
 			font-size: 0.9em;
-			&:not(:last-child){
-				border-right: 1px solid $color-gray-1;
-			}
 			& > a{
 				display: block;
-				padding: 15px 10px;
+				padding: 15px 0px;
 				position: relative;
 			}
+			&:nth-child(4){
+		    width: 70px;
+		    text-align: right;
+			}
+			&:nth-child(5){
+				margin-left: 350px;
+			}
+
 			&:hover{
-				background-color: $color-1;
 				a{
-					color: white;
+					color: $color-1;
 				}
 				.sub-menu-1,{
 					transform: none;transform: unset;

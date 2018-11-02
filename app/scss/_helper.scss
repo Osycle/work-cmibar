@@ -258,7 +258,7 @@ html{
 
 
 /* flexboxes */
-[class*='flexboxes']{
+.flexboxes-1, .flexboxes-2, .flexboxes-3, .flexboxes-4, .flexboxes-5, .flexboxes-6{
 	display: flex;
 	justify-content: center;
 	flex-direction: row;

@@ -4,15 +4,15 @@
 		--Variables--
 */
 
-$color-1: #00318D !default;
-$color-2: #b99b3e !default;
+$color-1: #b99b3e !default;
+$color-2: #e3000f !default;
 $color-3: #010b1c !default;
 $color-4: #db4047 !default;
 $color-5: #e3a600 !default;
 $color-special-1: #2e1c11;
 
 $font-family-1: "Open Sans";
-$font-family-2: "Open Sans";
+$font-family-2: "Times New Roman";
 $font-family-3: "sans-serif";
 
 $color-scroll: $color-1;
@@ -776,7 +776,7 @@ body{
 	//color: white;
 	//height: auto;
 	background-color: white;
-	//background-image: url('../img/bg/bg-body.jpg');
+	background-image: url('../img/bg/bg-body.jpg');
 	background-repeat: repeat-y;
 	//background-size: cover;
 }
@@ -823,9 +823,12 @@ ol{
 	padding-left: 0;
 	margin-top: 10px;
 	list-style-position: inside;
+
 	li{
-		line-height: 150%;
+		line-height: 200%;
+		color: $color-gray-3;
 	}
+
 }
 hr{
 	margin-top: 5px;
@@ -987,7 +990,7 @@ main{
 	overflow: hidden;
 	//min-height: 300px;
 	z-index: 1;
-	color: black;
+	color: white;
 	@extend .list-style-1;
 	@media (max-width: 991px){
 		text-align: center ;
