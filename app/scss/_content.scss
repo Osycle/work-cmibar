@@ -247,3 +247,30 @@
 
 
 
+
+
+//short-about
+.short-about{
+
+}
+
+
+
+//audio-panel
+.audio-panel{
+	span{
+		display: inline-block;
+	}
+	.volume-bar{
+		width: 50px;
+		background-color: white;
+		height: 5px;
+		position: relative;
+	}
+	.volume-bar-value{
+		width: 80%;
+		position: absolute;
+		height: 100%;
+		background-color: $color-1;
+	}
+}

@@ -32,7 +32,7 @@
 .footer-content{
 
 	.align-i-center{
-		min-height: 200px;
+		min-height: 100px;
 		@media (max-width: 991px) {
 			flex-direction: column-reverse;
 		}
@@ -43,6 +43,9 @@
 	font-size: 20px;
 	li{
 		margin: 0 5px;
+	}
+	.fa-paper-plane{
+		font-size: 17px;
 	}
 }
 

@@ -648,10 +648,11 @@ table {
 	@extend .btn-style;
 	background-color: transparent;
 	border: 1px solid currentColor;
+	border-radius: 5px;
 	color: currentColor;
-	transition: all 0.3s ease-in-out;
+	//transition: all 0.3s ease-in-out;
 	a{
-		transition: none !important;
+		//transition: none !important;
 	}
 	box-shadow: inset 0 0 0px black, 0px 0px 0px 0px darken(white, 12%), 0px 0px 0px 0px $color-2;
 	&:hover{
@@ -902,14 +903,14 @@ thined{
 h1,h2,h3,h4,h5{
 	color: inherit;
 	line-height: 125%;
-	//font-family: $font-family-1;
+	font-family: $font-family-2;
 }
 
 h1, h2, h3, h4{
 	margin-top: 10px;
 	margin-bottom: 10px;
 	font-weight: 600;
-	position: relative;	
+	position: relative;
 }
 h1{
 	line-height: 125%;
