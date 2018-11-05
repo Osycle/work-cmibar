@@ -195,9 +195,6 @@
 
 
 .short-posters-items{
-	.wrapper{
-
-	}
 	.img-content{
 		padding: 10px;
 		border: 1px solid rgba(white, 0.3);
@@ -213,10 +210,29 @@
 	[class*="flexboxes"]{
 		justify-content: left;
 	}
-	.img-content{
-		
+	.wrapper{
+		transition: 0.5s;
+	}
+	figure{
+		&:hover{
+			.wrapper{
+				background-color: rgba($color-1, 0.4);
+			}
+		}
+	}
+	.flickity-page-dots{
+		margin-bottom: 0;
 	}
 	@media (min-width: 992px) {
+		.flickity-page-dots{
+			margin-bottom: 0;
+		.dot:nth-last-child(-n+3){
+			display: none;
+		}
+		}
+		figure{
+			width: 23%;
+		}
 		.text-content{
 			padding-left: 15px;
 		}
