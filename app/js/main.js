@@ -396,25 +396,26 @@
 		//SCROLL
 		var minMenu = $(".header-scroll") || null;
 		var headerRange = false;
-		var staffProgressStatus = false;
 		$(window).on("scroll", function(e) {
 
 			//Адаптация хедера при скролинге
 			if ($(window).scrollTop() > 120 && headerRange == false) {
-
 				headerRange = true;
 				if (minMenu) minMenu.addClass("scrolled").addClass("down");
-
 			} else if ($(window).scrollTop() < 120 && headerRange == true) {
 				headerRange = !true;
 				if (minMenu) minMenu.removeClass("scrolled");
-			} //.originalEvent.wheelDelta
-
-
-			if( scrolledDiv($(".staff-progress")) && !staffProgressStatus ){
-				staffProgress();
-				staffProgressStatus = !staffProgressStatus;
 			}
+
+			if( !checkSm() ){
+				if( ($("#footer").offset().top) <= ($(window).scrollTop() + $(window).height() - ($("#footer").height()+30)) )
+					$("#footer").addClass("relative-audio-panel")
+				else if( $("#footer").hasClass("relative-audio-panel") )
+					$("#footer").removeClass("relative-audio-panel")
+			}
+			
+
+
 		});
 
 

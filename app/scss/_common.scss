@@ -776,9 +776,10 @@ body{
 	overflow-x: hidden;
 	//color: white;
 	//height: auto;
-	background-color: white;
+	background-color: black;
 	background-image: url('../img/bg/bg-body.jpg');
-	background-repeat: repeat-y;
+	background-position: top;
+	background-repeat: no-repeat;
 	//background-size: cover;
 }
 

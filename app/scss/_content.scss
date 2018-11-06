@@ -223,6 +223,9 @@
 	.flickity-page-dots{
 		margin-bottom: 0;
 	}
+
+}
+.posters-carousel{
 	@media (min-width: 992px) {
 		.flickity-page-dots{
 			margin-bottom: 0;
@@ -246,39 +249,3 @@
 }
 
 
-
-
-
-//short-about
-.short-about{
-
-}
-
-
-
-//audio-panel
-.audio-panel{
-	span{
-		display: inline-block;
-	}
-	.jp-volume-bar{
-		width: 50px;
-		background-color: white;
-		height: 5px;
-		position: relative;
-	}
-	.jp-volume-bar-value{
-		width: 80%;
-		position: absolute;
-		height: 100%;
-		background-color: $color-1;
-	}
-}
-
-//jp-player
-#jp_container_1{
-	.jp-playlist, .jp-progress, .jp-time-holder, .jp-toggles, .jp-stop,
-	.jp-mute, .jp-volume-max{
-		display: none !important;
-	}
-}
