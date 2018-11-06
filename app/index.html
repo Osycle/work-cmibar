@@ -297,48 +297,7 @@
 
 
 
-<div id="jquery_jplayer_1" class="jp-jplayer"></div>
-<div id="jp_container_1" class="jp-audio" role="application" aria-label="media player">
-	<div class="jp-type-playlist">
-		<div class="jp-gui jp-interface">
-			<div class="jp-controls">
-				<button class="jp-previous" role="button" tabindex="0">previous</button>
-				<button class="jp-play" role="button" tabindex="0">play</button>
-				<button class="jp-next" role="button" tabindex="0">next</button>
-				<button class="jp-stop" role="button" tabindex="0">stop</button>
-			</div>
-			<div class="jp-progress">
-				<div class="jp-seek-bar">
-					<div class="jp-play-bar"></div>
-				</div>
-			</div>
-			<div class="jp-volume-controls">
-				<button class="jp-mute" role="button" tabindex="0">mute</button>
-				<button class="jp-volume-max" role="button" tabindex="0">max volume</button>
-				<div class="jp-volume-bar">
-					<div class="jp-volume-bar-value"></div>
-				</div>
-			</div>
-			<div class="jp-time-holder">
-				<div class="jp-current-time" role="timer" aria-label="time">&nbsp;</div>
-				<div class="jp-duration" role="timer" aria-label="duration">&nbsp;</div>
-			</div>
-			<div class="jp-toggles">
-				<button class="jp-repeat" role="button" tabindex="0">repeat</button>
-				<button class="jp-shuffle" role="button" tabindex="0">shuffle</button>
-			</div>
-		</div>
-		<div class="jp-playlist">
-			<ul>
-				<li>&nbsp;</li>
-			</ul>
-		</div>
-		<div class="jp-no-solution">
-			<span>Update Required</span>
-			To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
-		</div>
-	</div>
-</div>
+
 
 
 
@@ -357,6 +316,9 @@
 				<div class="footer-content clearfix p-v-15 color-white row">
 					<div class="align-i-center justify-c-between header-top-content">
 						<div class="col-md-4 p-h-15">
+
+
+
 							<div>
 								<div class="audio-panel">
 									<span class="inline-block"><i class="fa fa-backward"></i></span>
@@ -365,6 +327,50 @@
 										<span class="jp-volume-bar-value"></span>
 									</span>
 									<span class="inline-block"><i class="fa fa-forward"></i></span>
+
+							<div id="jquery_jplayer_1" class="jp-jplayer"></div>
+							<div id="jp_container_1" class="jp-audio" role="application" aria-label="media player">
+								<div class="jp-type-playlist">
+									<div class="jp-gui jp-interface">
+										<div class="jp-controls">
+											<span class="jp-previous" role="button"><i class="fa fa-backward"></i></span>
+											<span class="jp-next" role="button"><i class="fa fa-forward"></i></span>
+											<button class="jp-play" role="button" tabindex="0">play</button>
+											<button class="jp-stop" role="button" tabindex="0">stop</button>
+										</div>
+										<div class="jp-progress">
+											<div class="jp-seek-bar">
+												<div class="jp-play-bar"></div>
+											</div>
+										</div>
+										<div class="jp-volume-controls">
+											<button class="jp-mute" role="button" tabindex="0">mute</button>
+											<button class="jp-volume-max" role="button" tabindex="0">max volume</button>
+											<div class="jp-volume-bar">
+												<div class="jp-volume-bar-value"></div>
+											</div>
+										</div>
+										<div class="jp-time-holder">
+											<div class="jp-current-time" role="timer" aria-label="time">&nbsp;</div>
+											<div class="jp-duration" role="timer" aria-label="duration">&nbsp;</div>
+										</div>
+										<div class="jp-toggles">
+											<button class="jp-repeat" role="button" tabindex="0">repeat</button>
+											<button class="jp-shuffle" role="button" tabindex="0">shuffle</button>
+										</div>
+									</div>
+									<div class="jp-playlist">
+										<ul>
+											<li>&nbsp;</li>
+										</ul>
+									</div>
+									<div class="jp-no-solution">
+										<span>Update Required</span>
+										To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+									</div>
+								</div>
+							</div>
+
 								</div>
 							</div>
 						</div>
@@ -408,7 +414,7 @@
 	<!-- SCRIPTS -->
 	<script src="js/scripts.min.js"></script>
 	<script src="js/main.js"></script>
-	<link href="jplayer/skin/blue.monday/css/jplayer.blue.monday.min.css" rel="stylesheet" type="text/css" />
+	<!-- <link href="jplayer/skin/blue.monday/css/jplayer.blue.monday.min.css" rel="stylesheet" type="text/css" /> -->
 	<script type="text/javascript" src="jplayer/jplayer/jquery.jplayer.min.js"></script>
 	<script type="text/javascript" src="jplayer/add-on/jplayer.playlist.min.js"></script>
 	<script type="text/javascript">
@@ -417,10 +423,11 @@
 
 $(document).ready(function(){
 
-	new jPlayerPlaylist({
+	var cssSelector = {
 		jPlayer: "#jquery_jplayer_1",
 		cssSelectorAncestor: "#jp_container_1"
-	}, [
+	}
+	var playlist = [
 		{
 			title:"Cro Magnon Man",
 			mp3:"http://www.jplayer.org/audio/mp3/TSP-01-Cro_magnon_man.mp3",
@@ -489,15 +496,48 @@ $(document).ready(function(){
 			mp3:"http://www.jplayer.org/audio/mp3/Miaow-10-Thin-ice.mp3",
 			oga:"http://www.jplayer.org/audio/ogg/Miaow-10-Thin-ice.ogg"
 		}
-	], {
+	]
+	var options = {
 		swfPath: "jplayer/jplayer",
 		supplied: "oga, mp3",
 		wmode: "window",
+
 		useStateClassSkin: true,
 		autoBlur: false,
+		toggleDuration: false,
 		smoothPlayBar: true,
-		keyEnabled: true
-	});
+		keyEnabled: true,
+		
+		playlistOptions: {
+		  autoPlay: false,
+		  loopOnPrevious: false,
+		  shuffleOnLoop: true,
+		  enableRemoveControls: false,
+		  displayTime: 'slow',
+		  addTime: 'fast',
+		  removeTime: 'fast',
+		  shuffleTime: 'slow'
+		}
+	}
+
+	window.pl = new jPlayerPlaylist(cssSelector, playlist, options);
+
+	$("#jquery_jplayer_1").jPlayer({
+    ready: function () {
+      $(this).jPlayer("setMedia", {mp3: "mp3/elvis.mp3"});
+      console.log("raedy")
+    },
+    timeFormatshowHour: {
+			showHour: false,
+			showMin: false,
+			showSec: false
+    },
+		autohide: "fadeIn",
+		volume: 0.1
+	})
+
+
+
 });
 
 

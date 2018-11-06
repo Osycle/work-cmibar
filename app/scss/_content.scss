@@ -261,16 +261,24 @@
 	span{
 		display: inline-block;
 	}
-	.volume-bar{
+	.jp-volume-bar{
 		width: 50px;
 		background-color: white;
 		height: 5px;
 		position: relative;
 	}
-	.volume-bar-value{
+	.jp-volume-bar-value{
 		width: 80%;
 		position: absolute;
 		height: 100%;
 		background-color: $color-1;
+	}
+}
+
+//jp-player
+#jp_container_1{
+	.jp-playlist, .jp-progress, .jp-time-holder, .jp-toggles, .jp-stop,
+	.jp-mute, .jp-volume-max{
+		display: none !important;
 	}
 }
