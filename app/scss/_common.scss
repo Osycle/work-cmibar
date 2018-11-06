@@ -776,14 +776,24 @@ body{
 	overflow-x: hidden;
 	//color: white;
 	//height: auto;
+	transition: 0.5s;
+	//animation: togglebg 5s steps(100) infinite;
 	background-color: black;
 	background-image: url('../img/bg/bg-body.jpg');
+	background-size: 100%;
 	background-position: top;
 	background-repeat: no-repeat;
 	//background-size: cover;
 }
 
-
+@keyframes togglebg{
+	from{
+		background-size: 100%;
+	}
+	to{
+		background-size: 130%;
+	}
+}
 
 p, li, ul, menu{
 	margin: 0;
