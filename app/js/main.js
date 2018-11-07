@@ -408,7 +408,7 @@
 			}
 
 			if( !checkSm() ){
-				if( ($("#footer").offset().top) <= ($(window).scrollTop() + $(window).height() - ($("#footer").height()+30)) )
+				if( ($("#footer").offset().top) <= ($(window).scrollTop() + $(window).height() - ($("#footer").height()+20)) )
 					$("#footer").addClass("relative-audio-panel")
 				else if( $("#footer").hasClass("relative-audio-panel") )
 					$("#footer").removeClass("relative-audio-panel")
@@ -582,3 +582,58 @@ function intSpace( int, replaceType ){
 		}
 		return newInt;
 }
+
+
+
+
+
+$(document).ready(function(){
+
+	var cssSelector = {
+		jPlayer: "#jquery_jplayer_1",
+		cssSelectorAncestor: "#jp_container_1"
+	}
+	var playlist = [
+		{
+			title:"Melody-1",
+			mp3:"sounds/cmi-melody-2.mp3"
+		},
+		{
+			title:"melody-1",
+			mp3:"sounds/cmi-melody-1.mp3"
+		}
+	]
+	var options = {
+		swfPath: "jplayer/jplayer",
+		supplied: "oga, mp3",
+		wmode: "window",
+
+		useStateClassSkin: true,
+		autoBlur: false,
+		toggleDuration: false,
+		smoothPlayBar: true,
+		keyEnabled: true,
+		loop: true,
+		playlistOptions: {
+		  autoPlay: false,
+		  loopOnPrevious: false,
+		  shuffleOnLoop: true,
+		  enableRemoveControls: false,
+		  displayTime: 'slow',
+		  addTime: 'fast',
+		  removeTime: 'fast',
+		  shuffleTime: 'slow'
+		}
+	}
+
+	window.pl = new jPlayerPlaylist(cssSelector, playlist, options);
+	window.jpCurrentTime = $('#jquery_jplayer_1').data("jPlayer").status.currentTime;
+	console.log(jpCurrentTime);
+	$("#jquery_jplayer_1").jPlayer({
+		autohide: "fadeIn",
+		volume: 0.1
+	})
+
+
+
+});

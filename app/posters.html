@@ -130,8 +130,8 @@
 			<!-- short-posters -->
 			<div class="short-posters">
 				<div class="container p-b-60">
-					<div class="entry-header text-center">
-						<h1>Cmi-bar Afisha</h1>
+					<div class="entry-header text-center m-b-30">
+						<h1><span class="color-1">CMI-BAR. </span>Афиша</h1>
 					</div>
 
 					<div class="short-posters-items boxes-4 figure-m-v-15 p-b-25">
@@ -409,66 +409,8 @@
 	<!-- <link href="jplayer/skin/blue.monday/css/jplayer.blue.monday.min.css" rel="stylesheet" type="text/css" /> -->
 	<script type="text/javascript" src="jplayer/jplayer/jquery.jplayer.min.js"></script>
 	<script type="text/javascript" src="jplayer/add-on/jplayer.playlist.min.js"></script>
-	<script type="text/javascript">
-		
 
 
-$(document).ready(function(){
-
-	var cssSelector = {
-		jPlayer: "#jquery_jplayer_1",
-		cssSelectorAncestor: "#jp_container_1"
-	}
-	var playlist = [
-		{
-			title:"Melody-2",
-			mp3:"sounds/cmi-melody-1.mp3"
-		},
-		{
-			title:"melody-1",
-			mp3:"http://www.jplayer.org/audio/mp3/TSP-01-Cro_magnon_man.mp3"
-		}
-	]
-	var options = {
-		swfPath: "jplayer/jplayer",
-		supplied: "oga, mp3",
-		wmode: "window",
-
-		useStateClassSkin: true,
-		autoBlur: false,
-		toggleDuration: false,
-		smoothPlayBar: true,
-		keyEnabled: true,
-		loop: true,
-		playlistOptions: {
-		  autoPlay: 1,
-		  loopOnPrevious: false,
-		  shuffleOnLoop: true,
-		  enableRemoveControls: false,
-		  displayTime: 'slow',
-		  addTime: 'fast',
-		  removeTime: 'fast',
-		  shuffleTime: 'slow'
-		}
-	}
-
-	window.pl = new jPlayerPlaylist(cssSelector, playlist, options);
-
-	$("#jquery_jplayer_1").jPlayer({
-    ready: function () {
-      $(this).jPlayer("setMedia", {mp3: "mp3/elvis.mp3"});
-      console.log("raedy")
-    },
-		autohide: "fadeIn",
-		volume: 0.4
-	})
-
-
-
-});
-
-
-	</script>
 
 
 </body>
