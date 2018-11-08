@@ -308,3 +308,19 @@
   left: 50vw;
   position: absolute;
 }
+
+
+
+
+
+//partners
+.partners-items{
+	h3,h4,h5{
+		font-family: $font-family-1;
+		text-transform: none;
+	}
+	.img{
+		height: 170px;
+		background-position: 0 center;
+	}
+}

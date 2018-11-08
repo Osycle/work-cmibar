@@ -8357,6 +8357,14 @@ textarea.form-control {
   left: 50vw;
   position: absolute; }
 
+.partners-items h3, .partners-items h4, .partners-items h5 {
+  font-family: "Open Sans";
+  text-transform: none; }
+
+.partners-items .img {
+  height: 170px;
+  background-position: 0 center; }
+
 /* 
 		_footer.scss
 */

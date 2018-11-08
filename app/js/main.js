@@ -596,11 +596,11 @@ $(document).ready(function(){
 	var playlist = [
 		{
 			title:"Melody-1",
-			mp3:"sounds/cmi-melody-2.mp3"
+			mp3:"sounds/cmi-melody-1.mp3"
 		},
 		{
 			title:"melody-1",
-			mp3:"sounds/cmi-melody-1.mp3"
+			mp3:"sounds/cmi-melody-2.mp3"
 		}
 	]
 	var options = {
@@ -615,7 +615,7 @@ $(document).ready(function(){
 		keyEnabled: true,
 		loop: true,
 		playlistOptions: {
-		  autoPlay: false,
+		  autoPlay: true,
 		  loopOnPrevious: false,
 		  shuffleOnLoop: true,
 		  enableRemoveControls: false,
