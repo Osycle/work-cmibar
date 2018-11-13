@@ -8285,15 +8285,18 @@ textarea.form-control {
 .short-posters-items .flickity-page-dots {
   margin-bottom: 0; }
 
-@media (min-width: 992px) {
-  .posters-carousel .flickity-page-dots {
-    margin-bottom: 0; }
-    .posters-carousel .flickity-page-dots .dot:nth-last-child(-n+3) {
-      display: none; }
-  .posters-carousel figure {
-    width: 23%; }
-  .posters-carousel .text-content {
-    padding-left: 15px; } }
+.posters-carousel {
+  padding-left: 15px;
+  padding-right: 15px; }
+  @media (min-width: 992px) {
+    .posters-carousel .flickity-page-dots {
+      margin-bottom: 0; }
+      .posters-carousel .flickity-page-dots .dot:nth-last-child(-n+3) {
+        display: none; }
+    .posters-carousel figure {
+      width: 23%; }
+    .posters-carousel .text-content {
+      padding-left: 15px; } }
 
 .date-content {
   color: #b99b3e; }
@@ -8440,7 +8443,7 @@ textarea.form-control {
     display: block; }
   .audio-panel .jp-state-playing .fa-play {
     display: none; }
-  .audio-panel .jp-volume-bar {
+  .audio-panel .jp-volume-bar, .audio-panel .jp-seek-bar {
     margin: 0 5px;
     width: 100px;
     background-color: white;
@@ -8449,7 +8452,7 @@ textarea.form-control {
     overflow: hidden;
     height: 6px;
     position: relative; }
-  .audio-panel .jp-volume-bar-value {
+  .audio-panel .jp-volume-bar-value, .audio-panel .jp-play-bar {
     width: 80%;
     position: absolute;
     height: 100%;
@@ -8480,7 +8483,7 @@ textarea.form-control {
 .relative-audio-panel .audio-panel {
   position: relative; }
 
-#jp_container_1 .jp-playlist, #jp_container_1 .Ajp-progress, #jp_container_1 .jp-time-holder, #jp_container_1 .jp-toggles, #jp_container_1 .jp-stop,
+#jp_container_1 .jp-playlist, #jp_container_1 .jp-time-holder, #jp_container_1 .jp-toggles, #jp_container_1 .jp-stop,
 #jp_container_1 .jp-mute, #jp_container_1 .jp-volume-max {
   display: none !important; }
 

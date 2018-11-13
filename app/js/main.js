@@ -586,7 +586,7 @@ function intSpace( int, replaceType ){
 
 
 
-
+$('#jquery_jplayer_1 audio').attr("webkit-playsinline", "true").attr("playsinline", "true");
 $(document).ready(function(){
 
 	var cssSelector = {
@@ -607,7 +607,6 @@ $(document).ready(function(){
 		swfPath: "jplayer/jplayer",
 		supplied: "oga, mp3",
 		wmode: "window",
-
 		useStateClassSkin: true,
 		autoBlur: false,
 		toggleDuration: false,
@@ -615,7 +614,7 @@ $(document).ready(function(){
 		keyEnabled: true,
 		loop: true,
 		playlistOptions: {
-		  autoPlay: true,
+		  autoPlay: false,
 		  loopOnPrevious: false,
 		  shuffleOnLoop: true,
 		  enableRemoveControls: false,
@@ -626,14 +625,51 @@ $(document).ready(function(){
 		}
 	}
 
-	window.pl = new jPlayerPlaylist(cssSelector, playlist, options);
-	window.jpCurrentTime = $('#jquery_jplayer_1').data("jPlayer").status.currentTime;
-	console.log(jpCurrentTime);
 	$("#jquery_jplayer_1").jPlayer({
 		autohide: "fadeIn",
-		volume: 0.1
+		emulateHtml: true,
+		volume: 0.2
+	});
+
+	window.jPlaylist = new jPlayerPlaylist(cssSelector, playlist, options);
+	window.jControl = {
+		player: $('#jquery_jplayer_1'),
+		currentTime: function( seconds ){
+			if ( typeof seconds === "number" )
+				$('#jquery_jplayer_1').jPlayer("play", seconds);
+			return this.player.data("jPlayer").status.currentTime;
+		},
+		currentIndex: function( index ){
+			if ( typeof index === "number" )
+				jPlaylist.play(index);
+			return jPlaylist.current;
+		},
+		compl: function(){
+			var jsonText = {
+				currentTime: this.currentTime(),
+				currentIndex: this.currentIndex()
+			};
+			jsonText = JSON.stringify(jsonText);
+			console.log(jsonText);
+			return sessionStorage.setItem('jplayer', jsonText)
+		}
+	}
+
+	
+
+	var obj = JSON.parse(sessionStorage.getItem('jplayer'));
+	console.log(obj);
+
+	$("*").click(function(e){
+		e.stopPropagation();
+		jControl.compl();
 	})
 
-
-
+	setTimeout(function(){
+		//jControl.currentIndex(obj.currentIndex);
+		jControl.currentTime(obj.currentTime);
+		jControl.compl();
+	}, 300)
+	
+	//console.log(jControl.compl());
 });
