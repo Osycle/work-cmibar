@@ -6536,6 +6536,7 @@ tbody.collapse.in {
 html {
   -ms-scrollbar-track-color: transparent;
   -ms-scrollbar-face-color: #b99b3e;
+  overflow-y: scroll !important;
   -ms-scrollbar-shadow-color: #b99b3e;
   -ms-scrollbar-base-color: #c3a74d;
   -ms-scroll-translation: vertical-to-horizontal;
@@ -8262,7 +8263,8 @@ textarea.form-control {
 .short-posters-items .img {
   height: 420px;
   -webkit-background-size: cover;
-  background-size: cover; }
+  background-size: cover;
+  position: relative; }
 
 .short-posters-items .desc-content {
   padding: 5px 15px;
@@ -8278,6 +8280,9 @@ textarea.form-control {
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s; }
+
+.short-posters-items figure:hover .img {
+  z-index: -1; }
 
 .short-posters-items figure:hover .wrapper {
   background-color: rgba(185, 155, 62, 0.4); }
@@ -8368,6 +8373,14 @@ textarea.form-control {
   height: 170px;
   background-position: 0 center; }
 
+.gallery-items a {
+  padding: 3px; }
+
+.vacancies-form {
+  color: black; }
+  .vacancies-form textarea {
+    height: 126px; }
+
 /* 
 		_footer.scss
 */
@@ -8457,6 +8470,11 @@ textarea.form-control {
     position: absolute;
     height: 100%;
     background-color: #b99b3e; }
+  .audio-panel .jp-progress {
+    width: 185px;
+    padding-top: 5px; }
+    .audio-panel .jp-progress:hover {
+      cursor: pointer; }
   @media (min-width: 992px) {
     .audio-panel .fa-pause, .audio-panel .fa-play {
       width: 18px; } }
@@ -8749,17 +8767,22 @@ textarea.form-control {
 
 /* ---- .grid-item ---- */
 .grid-img-item {
-  width: 20%;
+  width: 25%;
   float: left; }
   .grid-img-item img {
     width: 100%; }
+  @media (max-width: 991px) {
+    .grid-img-item {
+      width: 50%; } }
 
 .grid-img-sizer {
   width: 25%; }
+  @media (max-width: 991px) {
+    .grid-img-sizer {
+      width: 50%; } }
 
 .grid-img-item img {
   display: block;
-  padding: 3px;
   max-width: 100%; }
 
 /*
@@ -8782,17 +8805,22 @@ textarea.form-control {
     border-radius: 3px; }
 
 .select2-container--default .select2-selection--single {
-  border: 1px solid #b99b3e;
-  background-color: #b99b3e; }
+  border: 1px solid transparent;
+  background-color: white;
+  height: 38px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px; }
+  .select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 38px; }
   .select2-container--default .select2-selection--single:focus {
     outline: none; }
   .select2-container--default .select2-selection--single .select2-selection__rendered {
-    color: white; }
+    color: black; }
   .select2-container--default .select2-selection--single .select2-selection__arrow b {
-    border-color: white transparent transparent transparent; }
+    border-color: black transparent transparent transparent; }
 
 .select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b {
-  border-color: transparent transparent white transparent; }
+  border-color: transparent transparent black transparent; }
 
 .select2-container--default .select2-results__option--highlighted[aria-selected] {
   background-color: white;

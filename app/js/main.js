@@ -586,8 +586,43 @@ function intSpace( int, replaceType ){
 
 
 
-$('#jquery_jplayer_1 audio').attr("webkit-playsinline", "true").attr("playsinline", "true");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 $(document).ready(function(){
+
+
+	var jsonOptions = JSON.parse( sessionStorage["jplayer"] || false );
+
 
 	var cssSelector = {
 		jPlayer: "#jquery_jplayer_1",
@@ -607,12 +642,36 @@ $(document).ready(function(){
 		swfPath: "jplayer/jplayer",
 		supplied: "oga, mp3",
 		wmode: "window",
+		//emulateHtml: true,
 		useStateClassSkin: true,
 		autoBlur: false,
 		toggleDuration: false,
-		smoothPlayBar: true,
+		smoothPlayBar: false,
 		keyEnabled: true,
 		loop: true,
+		timeupdate: function(e){
+			jControl.update();
+		},
+		play: function(e){
+			jControl.statusPlay = true;
+			jControl.update();
+		},
+		pause: function(e){
+			jControl.statusPlay = false;
+			jControl.update();
+		},
+		ready: function(){
+			setTimeout(function(){
+				jControl.currentTime(jsonOptions.currentTime, !jsonOptions.statusPlay);
+				jPlaylist.select(jsonOptions.currentIndex);
+				jControl.currentVolume(jsonOptions.currentVolume);
+				jControl.update();
+			}, 300)
+			console.log("ready");
+		},
+		autohide: "fadeIn",
+		volume: 0.1,
+
 		playlistOptions: {
 		  autoPlay: false,
 		  loopOnPrevious: false,
@@ -625,28 +684,56 @@ $(document).ready(function(){
 		}
 	}
 
-	$("#jquery_jplayer_1").jPlayer({
-		autohide: "fadeIn",
-		emulateHtml: true,
-		volume: 0.2
-	});
 
-	window.jPlaylist = new jPlayerPlaylist(cssSelector, playlist, options);
+
+	
+window.jPlaylist = new jPlayerPlaylist(cssSelector, playlist, options);
+
+
+	// setInterval(function(){
+	// 	if( !jControl.statusPlay )
+	// 		jControl.status = false;
+	// 	else
+	// 		jControl.status = true;
+
+	// 	console.log(jControl);
+	// }, 2000)
+
+
+
+
+
 	window.jControl = {
 		player: $('#jquery_jplayer_1'),
-		currentTime: function( seconds ){
-			if ( typeof seconds === "number" )
-				$('#jquery_jplayer_1').jPlayer("play", seconds);
+		status: "",
+		statusPlay: "",
+		currentTime: function( num, played ){
+			played = played || false;
+
+			if ( !isNaN(num*1) & !played )
+				this.player.data("jPlayer").play(num);
+			if ( played )
+				this.player.data("jPlayer").pause(num);
+
 			return this.player.data("jPlayer").status.currentTime;
+
 		},
-		currentIndex: function( index ){
-			if ( typeof index === "number" )
-				jPlaylist.play(index);
+		currentIndex: function( num ){
+			if ( !isNaN(num*1) )
+				jPlaylist.play(num);
 			return jPlaylist.current;
 		},
-		compl: function(){
+		currentVolume: function( num ){
+			if ( !isNaN(num*1) )
+				this.player.data("jPlayer").volume(num);
+			return this.player.data("jPlayer").options.volume;
+		},
+		update: function(){
 			var jsonText = {
 				currentTime: this.currentTime(),
+				currentVolume: this.currentVolume(),
+				status: this.status,
+				statusPlay: this.statusPlay,
 				currentIndex: this.currentIndex()
 			};
 			jsonText = JSON.stringify(jsonText);
@@ -655,21 +742,12 @@ $(document).ready(function(){
 		}
 	}
 
+
+
+
+
+
+
 	
-
-	var obj = JSON.parse(sessionStorage.getItem('jplayer'));
-	console.log(obj);
-
-	$("*").click(function(e){
-		e.stopPropagation();
-		jControl.compl();
-	})
-
-	setTimeout(function(){
-		//jControl.currentIndex(obj.currentIndex);
-		jControl.currentTime(obj.currentTime);
-		jControl.compl();
-	}, 300)
-	
-	//console.log(jControl.compl());
+	//console.log(jControl.update());
 });

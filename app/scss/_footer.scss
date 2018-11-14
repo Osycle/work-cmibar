@@ -116,11 +116,16 @@
 		background-color: $color-1;
 	}
 	.jp-progress{
+		width: 185px;
+    padding-top: 5px;
 		.jp-seek-bar{
 			.jp-play-bar{
 				
 			}
 		}
+    &:hover{
+    	cursor: pointer;
+    }
 	}
 	@media (min-width: 992px) {
 		.fa-pause, .fa-play{

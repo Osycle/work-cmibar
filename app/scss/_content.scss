@@ -202,6 +202,7 @@
 	.img{
 		height: 420px;
 		background-size: cover;
+		position: relative;
 	}
 	.desc-content{
 		padding: 5px 15px;
@@ -215,6 +216,9 @@
 	}
 	figure{
 		&:hover{
+			.img{
+				z-index: -1;
+			}
 			.wrapper{
 				background-color: rgba($color-1, 0.4);
 			}
@@ -324,5 +328,25 @@
 	.img{
 		height: 170px;
 		background-position: 0 center;
+	}
+}
+
+
+
+//gallery
+.gallery-items{
+	a{
+		padding: 3px;
+	}
+	.cell-hover{
+		//transform: scale(0.98);
+	}
+}
+
+
+.vacancies-form{
+	color: black;
+	textarea{
+		height: 126px;
 	}
 }

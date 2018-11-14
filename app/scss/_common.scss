@@ -88,6 +88,7 @@ $bg-color-gray: #363636;
 html{
 	-ms-scrollbar-track-color: rgba(0, 0, 0, 0);
 	-ms-scrollbar-face-color: $color-scroll;
+	overflow-y: scroll !important;
 	-ms-scrollbar-shadow-color: $color-scroll;
 	-ms-scrollbar-base-color: lighten($color-scroll, 5%);
 
@@ -772,7 +773,6 @@ body{
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased;
 	text-size-adjust: none;
-
 	font: 14px $font-family-1;
 	overflow-x: hidden;
 	//color: white;
