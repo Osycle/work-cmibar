@@ -621,7 +621,7 @@ function intSpace( int, replaceType ){
 $(document).ready(function(){
 
 
-	var jsonOptions = JSON.parse( sessionStorage["jplayer"] || false );
+	window.jsonOptions = JSON.parse( sessionStorage["jplayer"] || false );
 
 
 	var cssSelector = {
@@ -661,12 +661,6 @@ $(document).ready(function(){
 			jControl.update();
 		},
 		ready: function(){
-			setTimeout(function(){
-				jControl.currentTime(jsonOptions.currentTime, !jsonOptions.statusPlay);
-				jPlaylist.select(jsonOptions.currentIndex);
-				jControl.currentVolume(jsonOptions.currentVolume);
-				jControl.update();
-			}, 300)
 			console.log("ready");
 		},
 		autohide: "fadeIn",
@@ -687,7 +681,7 @@ $(document).ready(function(){
 
 
 	
-window.jPlaylist = new jPlayerPlaylist(cssSelector, playlist, options);
+	window.jPlaylist = new jPlayerPlaylist(cssSelector, playlist, options);
 
 
 	// setInterval(function(){
@@ -701,19 +695,17 @@ window.jPlaylist = new jPlayerPlaylist(cssSelector, playlist, options);
 
 
 
-
-
 	window.jControl = {
 		player: $('#jquery_jplayer_1'),
 		status: "",
 		statusPlay: "",
 		currentTime: function( num, played ){
 			played = played || false;
-
-			if ( !isNaN(num*1) & !played )
+			console.log( typeof num*1 == "number" );
+			if ( typeof num === "number" )
 				this.player.data("jPlayer").play(num);
-			if ( played )
-				this.player.data("jPlayer").pause(num);
+			// else if ( played )
+			// 	this.player.data("jPlayer").pause(num);
 
 			return this.player.data("jPlayer").status.currentTime;
 
@@ -738,16 +730,19 @@ window.jPlaylist = new jPlayerPlaylist(cssSelector, playlist, options);
 			};
 			jsonText = JSON.stringify(jsonText);
 			console.log(jsonText);
-			return sessionStorage.setItem('jplayer', jsonText)
+			return sessionStorage.setItem('jplayer', jsonText);
 		}
 	}
 
 
 
+	setTimeout(function(){
+		jControl.currentTime(jsonOptions.currentTime);
+		jPlaylist.select(jsonOptions.currentIndex);
+		jControl.currentVolume(jsonOptions.currentVolume);
+		jControl.update();
+	}, 300)
 
 
 
-
-	
-	//console.log(jControl.update());
 });
