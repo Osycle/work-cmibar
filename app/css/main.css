@@ -7549,6 +7549,7 @@ label {
 .header-top {
   z-index: 3;
   position: relative;
+  top: 0px;
   width: 100%; }
   .header-top .btn-def {
     display: block; }
@@ -7570,12 +7571,13 @@ label {
   .header-bottom .align-i-center {
     height: 85px; }
 
-.header-logo img {
-  display: inline-block;
-  position: absolute;
-  width: 225px;
-  vertical-align: middle;
-  top: 10px; }
+.header-logo {
+  position: relative; }
+  .header-logo img {
+    display: inline-block;
+    position: absolute;
+    width: 225px;
+    vertical-align: middle; }
 
 .header-scroll .header-top {
   -webkit-transform-origin: 50% 0;
@@ -7588,16 +7590,19 @@ label {
   transition: all 0.5s ease; }
 
 .header-scroll .header-info {
-  -webkit-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
-  transition: all 0.3s ease; }
+  -webkit-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease; }
 
 .header-scroll.scrolled .header-top, .header-scroll.header-pages .header-top {
   -webkit-box-shadow: 0px 5px 20px -10px black;
   box-shadow: 0px 5px 20px -10px black; }
 
 .header-scroll.scrolled .header-top-content, .header-scroll.header-pages .header-top-content {
-  height: 0; }
+  height: 0;
+  position: relative; }
+  .header-scroll.scrolled .header-top-content .col-md-4:not(.header-logo), .header-scroll.header-pages .header-top-content .col-md-4:not(.header-logo) {
+    height: 0; }
 
 .header-scroll.scrolled .header-logo img, .header-scroll.header-pages .header-logo img {
   width: 110px;
@@ -8488,20 +8493,22 @@ textarea.form-control {
       -ms-transform: translateX(-50%);
       transform: translateX(-50%);
       background-color: rgba(185, 155, 62, 0.4);
-      padding: 15px 15px 15px 15px;
+      padding: 5px 5px 5px 5px;
       -webkit-border-radius: 10px 10px 0 0;
       border-radius: 10px 10px 0 0; }
       .audio-panel .fa {
         font-size: 30px; }
       .audio-panel .jp-play {
-        width: 30px;
+        width: 25px;
         margin-left: 30px;
-        margin-right: 30px; } }
+        margin-right: 30px; }
+      .audio-panel .jp-volume-bar {
+        display: none; } }
 
 .relative-audio-panel .audio-panel {
   position: relative; }
 
-#jp_container_1 .jp-playlist, #jp_container_1 .jp-time-holder, #jp_container_1 .jp-toggles, #jp_container_1 .jp-stop,
+#jp_container_1 .jp-playlist, #jp_container_1 .jp-progress, #jp_container_1 .jp-time-holder, #jp_container_1 .jp-toggles, #jp_container_1 .jp-stop,
 #jp_container_1 .jp-mute, #jp_container_1 .jp-volume-max {
   display: none !important; }
 

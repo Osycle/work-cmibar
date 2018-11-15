@@ -621,7 +621,7 @@ function intSpace( int, replaceType ){
 $(document).ready(function(){
 
 
-	window.jsonOptions = JSON.parse( sessionStorage["jplayer"] || false );
+	window.jsonOptions = JSON.parse( localStorage["jplayer"] || false );
 
 
 	var cssSelector = {
@@ -650,7 +650,8 @@ $(document).ready(function(){
 		keyEnabled: true,
 		loop: true,
 		timeupdate: function(e){
-			jControl.update();
+			jControl.dateLimit();
+			jControl.update(true);
 		},
 		play: function(e){
 			jControl.statusPlay = true;
@@ -661,10 +662,32 @@ $(document).ready(function(){
 			jControl.update();
 		},
 		ready: function(){
+			console.log( jsonOptions.dateLimit - (new Date().getTime())  )
+			//console.log(jsonOptions.status);
+			// if( jsonOptions.dateLimit < (new Date().getTime()) ){
+			// 	console.log("return")
+			// 	return;
+			// }
+			//else{
+				//console.log("else");
+				if( jsonOptions ){
+					setTimeout(function(){
+						jPlaylist.select(jsonOptions.currentIndex);
+						jControl.currentVolume(jsonOptions.currentVolume);
+						jControl.currentTime(jsonOptions.currentTime, !jsonOptions.statusPlay);
+						jControl.update();
+					}, 300);
+				}else{
+					jControl.currentTime(0);
+					jControl.update( true );
+				}
+				
+			//}
+			
 			console.log("ready");
 		},
 		autohide: "fadeIn",
-		volume: 0.1,
+		volume: checkSm() ? 1 : 0.9,
 
 		playlistOptions: {
 		  autoPlay: false,
@@ -684,28 +707,24 @@ $(document).ready(function(){
 	window.jPlaylist = new jPlayerPlaylist(cssSelector, playlist, options);
 
 
-	// setInterval(function(){
-	// 	if( !jControl.statusPlay )
-	// 		jControl.status = false;
-	// 	else
-	// 		jControl.status = true;
-
-	// 	console.log(jControl);
-	// }, 2000)
-
 
 
 	window.jControl = {
 		player: $('#jquery_jplayer_1'),
-		status: "",
-		statusPlay: "",
+		status: false,
+		dateLimit: function(){
+			//console.log("dateLimit")
+			var currentDate = new Date().getTime();
+			return currentDate+3000;
+		},
+		statusPlay: false,
 		currentTime: function( num, played ){
 			played = played || false;
-			console.log( typeof num*1 == "number" );
-			if ( typeof num === "number" )
+			//console.log( typeof num*1 == "number" );
+			if ( !isNaN(num*1) & !played )
 				this.player.data("jPlayer").play(num);
-			// else if ( played )
-			// 	this.player.data("jPlayer").pause(num);
+			if ( played )
+				this.player.data("jPlayer").pause(num);
 
 			return this.player.data("jPlayer").status.currentTime;
 
@@ -720,28 +739,27 @@ $(document).ready(function(){
 				this.player.data("jPlayer").volume(num);
 			return this.player.data("jPlayer").options.volume;
 		},
-		update: function(){
+		update: function( first ){
+			
 			var jsonText = {
 				currentTime: this.currentTime(),
 				currentVolume: this.currentVolume(),
+				dateLimit: first ? this.dateLimit() : jsonOptions.dateLimit,
 				status: this.status,
 				statusPlay: this.statusPlay,
 				currentIndex: this.currentIndex()
 			};
+			
+			//console.log(jsonText); 
 			jsonText = JSON.stringify(jsonText);
-			console.log(jsonText);
-			return sessionStorage.setItem('jplayer', jsonText);
+			//console.log(jsonText);
+			return localStorage.setItem('jplayer', jsonText);
 		}
 	}
 
 
 
-	setTimeout(function(){
-		jControl.currentTime(jsonOptions.currentTime);
-		jPlaylist.select(jsonOptions.currentIndex);
-		jControl.currentVolume(jsonOptions.currentVolume);
-		jControl.update();
-	}, 300)
+
 
 
 
