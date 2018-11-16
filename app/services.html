@@ -270,10 +270,154 @@
 	<!-- SCRIPTS -->
 	<script src="js/scripts.min.js"></script>
 	<script src="js/main.js"></script>
-	<!-- <link href="jplayer/skin/blue.monday/css/jplayer.blue.monday.min.css" rel="stylesheet" type="text/css" /> -->
 	<script type="text/javascript" src="jplayer/jplayer/jquery.jplayer.min.js"></script>
 	<script type="text/javascript" src="jplayer/add-on/jplayer.playlist.min.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		/*Player*/
+		$(document).ready(function(){
 
+
+			window.jsonOptions = JSON.parse( localStorage["jplayer"] || false );
+
+
+			var cssSelector = {
+				jPlayer: "#jquery_jplayer_1",
+				cssSelectorAncestor: "#jp_container_1"
+			}
+			var playlist = [
+				{
+					title:"Melody-1",
+					mp3:"sounds/cmi-melody-1.mp3"
+				},
+				{
+					title:"melody-1",
+					mp3:"sounds/cmi-melody-2.mp3"
+				}
+			]
+			var options = {
+				swfPath: "jplayer/jplayer",
+				supplied: "oga, mp3",
+				wmode: "window",
+				//emulateHtml: true,
+				useStateClassSkin: true,
+				autoBlur: false,
+				toggleDuration: false,
+				smoothPlayBar: false,
+				keyEnabled: true,
+				loop: true,
+				timeupdate: function(e){
+					jControl.dateLimit();
+					jControl.update(true);
+				},
+				play: function(e){
+					jControl.statusPlay = true;
+					jControl.update();
+				},
+				pause: function(e){
+					jControl.statusPlay = false;
+					jControl.update();
+				},
+				ready: function(){
+					console.log( jsonOptions.dateLimit - (new Date().getTime())  )
+					//console.log(jsonOptions.status);
+					// if( jsonOptions.dateLimit < (new Date().getTime()) ){
+					// 	console.log("return")
+					// 	return;
+					// }
+					//else{
+						//console.log("else");
+						if( jsonOptions ){
+							setTimeout(function(){
+								jPlaylist.select(jsonOptions.currentIndex);
+								jControl.currentVolume(jsonOptions.currentVolume);
+								jControl.currentTime(jsonOptions.currentTime, !jsonOptions.statusPlay);
+								jControl.update();
+							}, 300);
+						}else{
+							jControl.currentTime(0);
+							jControl.update( true );
+						}
+						
+					//}
+					
+				},
+				autohide: "fadeIn",
+				volume: checkSm() ? 1 : 0.9,
+
+				playlistOptions: {
+				  autoPlay: false,
+				  loopOnPrevious: false,
+				  shuffleOnLoop: true,
+				  enableRemoveControls: false,
+				  displayTime: 'slow',
+				  addTime: 'fast',
+				  removeTime: 'fast',
+				  shuffleTime: 'slow'
+				}
+			}
+
+
+
+			
+			window.jPlaylist = new jPlayerPlaylist(cssSelector, playlist, options);
+
+
+
+
+			window.jControl = {
+				player: $('#jquery_jplayer_1'),
+				status: false,
+				dateLimit: function(){
+					//console.log("dateLimit")
+					var currentDate = new Date().getTime();
+					return currentDate+3000;
+				},
+				statusPlay: false,
+				currentTime: function( num, played ){
+					played = played || false;
+					//console.log( typeof num*1 == "number" );
+					if ( !isNaN(num*1) & !played )
+						this.player.data("jPlayer").play(num);
+					if ( played )
+						this.player.data("jPlayer").pause(num);
+
+					return this.player.data("jPlayer").status.currentTime;
+
+				},
+				currentIndex: function( num ){
+					if ( !isNaN(num*1) )
+						jPlaylist.play(num);
+					return jPlaylist.current;
+				},
+				currentVolume: function( num ){
+					if ( !isNaN(num*1) )
+						this.player.data("jPlayer").volume(num);
+					return this.player.data("jPlayer").options.volume;
+				},
+				update: function( first ){
+					
+					var jsonText = {
+						currentTime: this.currentTime(),
+						currentVolume: this.currentVolume(),
+						dateLimit: first ? this.dateLimit() : jsonOptions.dateLimit,
+						status: this.status,
+						statusPlay: this.statusPlay,
+						currentIndex: this.currentIndex()
+					};
+					
+					jsonText = JSON.stringify(jsonText);
+					return localStorage.setItem('jplayer', jsonText);
+				}
+			}
+
+
+
+
+
+
+
+		});
+	</script>
 
 
 
