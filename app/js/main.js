@@ -221,7 +221,7 @@
         prevNextButtons: checkSm(),
         //setGallerySize: false,
         draggable: false,
-        adaptiveHeight: true, 
+        adaptiveHeight: false, 
         wrapAround: false,
         pageDots: true,
         contain: true,
