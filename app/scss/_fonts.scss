@@ -16,6 +16,30 @@ $path: "../fonts/";
 
 
 
+@font-face {
+    font-family: 'Bebas Neue Cyrillic';
+    src: url($path+'BebasNeueCyrillic.eot');
+    src: url($path+'BebasNeueCyrillic.eot?#iefix') format('embedded-opentype'),
+        url($path+'BebasNeueCyrillic.woff2') format('woff2'),
+        url($path+'BebasNeueCyrillic.woff') format('woff'),
+        url($path+'BebasNeueCyrillic.ttf') format('truetype'),
+        url($path+'BebasNeueCyrillic.svg#BebasNeueCyrillic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Bebas Neue Cyrillic';
+    src: url($path+'BebasNeueCyrillic_1.eot');
+    src: url($path+'BebasNeueCyrillic_1.eot?#iefix') format('embedded-opentype'),
+        url($path+'BebasNeueCyrillic_1.woff2') format('woff2'),
+        url($path+'BebasNeueCyrillic_1.woff') format('woff'),
+        url($path+'BebasNeueCyrillic_1.ttf') format('truetype'),
+        url($path+'BebasNeueCyrillic_1.svg#BebasNeueCyrillic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
 
 
 

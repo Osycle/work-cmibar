@@ -5901,6 +5901,20 @@ tbody.collapse.in {
   font-weight: 300;
   font-style: normal; }
 
+@font-face {
+  font-family: 'Bebas Neue Cyrillic';
+  src: url("../fonts/BebasNeueCyrillic.eot");
+  src: url("../fonts/BebasNeueCyrillic.eot?#iefix") format("embedded-opentype"), url("../fonts/BebasNeueCyrillic.woff2") format("woff2"), url("../fonts/BebasNeueCyrillic.woff") format("woff"), url("../fonts/BebasNeueCyrillic.ttf") format("truetype"), url("../fonts/BebasNeueCyrillic.svg#BebasNeueCyrillic") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Bebas Neue Cyrillic';
+  src: url("../fonts/BebasNeueCyrillic_1.eot");
+  src: url("../fonts/BebasNeueCyrillic_1.eot?#iefix") format("embedded-opentype"), url("../fonts/BebasNeueCyrillic_1.woff2") format("woff2"), url("../fonts/BebasNeueCyrillic_1.woff") format("woff"), url("../fonts/BebasNeueCyrillic_1.ttf") format("truetype"), url("../fonts/BebasNeueCyrillic_1.svg#BebasNeueCyrillic") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
 .select2-container {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -6739,10 +6753,10 @@ table {
   text-decoration: underline; }
 
 .font-family-1 {
-  font-family: "Open Sans"; }
+  font-family: "Bebas Neue Cyrillic"; }
 
 .font-family-2 {
-  font-family: "Times New Roman"; }
+  font-family: "Bebas Neue Cyrillic"; }
 
 .font-family-3 {
   font-family: "sans-serif"; }
@@ -7036,7 +7050,7 @@ table {
   display: inline-block;
   white-space: nowrap;
   text-align: center;
-  font-family: "Open Sans"; }
+  font-family: "Bebas Neue Cyrillic"; }
   .btn-style.text-wrap, .text-wrap.btn-def, .text-wrap.btn-icon, .text-wrap.btn-opacity {
     white-space: wrap; }
   .btn-style button, .btn-def button, .btn-icon button, .btn-opacity button {
@@ -7164,7 +7178,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-text-size-adjust: none;
   text-size-adjust: none;
-  font: 14px "Open Sans";
+  font: 16px "Bebas Neue Cyrillic";
   overflow-x: hidden;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
@@ -7297,7 +7311,7 @@ thined {
 h1, h2, h3, h4, h5 {
   color: inherit;
   line-height: 125%;
-  font-family: "Times New Roman"; }
+  font-family: "Bebas Neue Cyrillic"; }
 
 h1, h2, h3, h4 {
   margin-top: 10px;
@@ -7645,7 +7659,7 @@ label {
   font-weight: 500;
   position: relative;
   color: white;
-  font-family: "Times New Roman";
+  font-family: "Bebas Neue Cyrillic";
   font-weight: 600; }
   .menu nav {
     white-space: nowrap; }
@@ -7664,7 +7678,7 @@ label {
       position: relative;
       width: auto;
       letter-spacing: 0;
-      font-size: 0.9em;
+      font-size: 1.1em;
       -webkit-transform: translate(0, 10px);
       -ms-transform: translate(0, 10px);
       transform: translate(0, 10px); }
@@ -8319,7 +8333,7 @@ textarea.form-control {
 .services .tab-list {
   font-size: 1.3em;
   text-transform: uppercase;
-  font-family: "Times New Roman";
+  font-family: "Bebas Neue Cyrillic";
   font-weight: 600;
   display: -webkit-box;
   display: -webkit-flex;
@@ -8351,7 +8365,7 @@ textarea.form-control {
 
 .services .tab-content li {
   list-style: none;
-  font-family: "Times New Roman";
+  font-family: "Bebas Neue Cyrillic";
   text-transform: uppercase;
   font-weight: 600;
   margin-top: 15px;
@@ -8371,7 +8385,7 @@ textarea.form-control {
   position: absolute; }
 
 .partners-items h3, .partners-items h4, .partners-items h5 {
-  font-family: "Open Sans";
+  font-family: "Bebas Neue Cyrillic";
   text-transform: none; }
 
 .partners-items .img {
@@ -8687,7 +8701,7 @@ textarea.form-control {
       background-color: white; }
 
 .fancybox-caption {
-  font-family: "Open Sans"; }
+  font-family: "Bebas Neue Cyrillic"; }
 
 .prev-next-dots .carousel-prev-next {
   position: relative; }

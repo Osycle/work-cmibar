@@ -11,8 +11,8 @@ $color-4: #db4047 !default;
 $color-5: #e3a600 !default;
 $color-special-1: #2e1c11;
 
-$font-family-1: "Open Sans";
-$font-family-2: "Times New Roman";
+$font-family-1: "Bebas Neue Cyrillic"; //Open Sans
+$font-family-2: "Bebas Neue Cyrillic";
 $font-family-3: "sans-serif";
 
 $color-scroll: $color-1;
@@ -773,7 +773,7 @@ body{
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased;
 	text-size-adjust: none;
-	font: 14px $font-family-1;
+	font: 16px $font-family-1;
 	overflow-x: hidden;
 	//color: white;
 	//height: auto;
